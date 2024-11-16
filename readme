@@ -1,0 +1,76 @@
+BuyMeACoffee Smart Contract
+A simple Ethereum smart contract that allows users to support creators by sending ETH tips along with personalized messages. The owner of the contract can withdraw the accumulated funds at any time.
+
+Overview
+This smart contract enables:
+
+Users to send ETH tips along with their name and a message.
+The owner of the contract to withdraw the collected funds securely.
+Public viewing of all messages left by contributors.
+The contract is written in Solidity and is deployed on the Ethereum blockchain.
+
+Features
+Buy Coffee: Users can send ETH and leave a memo (name and message) for the contract owner.
+Memos Storage: All memos are stored on-chain and can be retrieved by anyone.
+Withdraw Tips: The contract owner can withdraw all ETH from the contract balance.
+Contract Address
+Deployed on Goerli Testnet: 0xDBa03676a2fBb6711CB652beF5B7416A53c1421D
+Smart Contract Code
+The contract is available in the BuyMeACoffee.sol file.
+
+How It Works
+1. Deploying the Contract
+The contract is deployed with the deployer's address set as the owner. This address will receive all withdrawn funds.
+
+2. Buying Coffee
+Users can call the buyCoffee function with the following:
+
+ETH value (greater than 0).
+A name (_name) and message (_message).
+3. Viewing Memos
+Anyone can call the getMemos function to retrieve all memos left by contributors.
+
+4. Withdrawing Tips
+The owner can call the withdrawTips function to transfer all funds to their wallet.
+
+Functions
+Public Functions
+buyCoffee(string memory _name, string memory _message) payable
+
+Send ETH along with a name and message.
+Emits a NewMemo event.
+getMemos() public view returns (Memo[] memory)
+
+Fetch all memos left by users.
+Returns an array of Memo structs.
+withdrawTips() public
+
+Transfers the contract's ETH balance to the owner.
+Only callable by the contract owner.
+Events
+NewMemo(address indexed from, uint256 timestamp, string name, string message)
+Emitted whenever a user leaves a memo.
+Requirements
+Solidity version ^0.8.0.
+Ethereum wallet (e.g., MetaMask) to interact with the contract.
+ETH for transaction fees and tipping.
+Deployment and Interaction
+Deploying the Contract
+Open Remix IDE.
+Paste the contract code from BuyMeACoffee.sol.
+Compile and deploy the contract using a wallet like MetaMask.
+Copy the contract address after deployment.
+Interacting with the Contract
+Use the contract address and ABI to interact with the contract via:
+
+Remix IDE
+Web3.js or Ethers.js
+A frontend dApp
+Users can call:
+
+buyCoffee to send ETH and a message.
+getMemos to view messages.
+Withdrawing Funds
+The owner must call the withdrawTips function to transfer ETH to their wallet.
+License
+This project is licensed under the Unlicense. You are free to use, modify, and distribute this project as you see fit.
